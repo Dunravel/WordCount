@@ -67,4 +67,21 @@ public class WordCountTest {
         //then
         Assert.assertEquals(1,wordCounter.count(TEST_WORD));
     }
+
+    @Test
+    public void shouldCountReturnTwoWhenAddedTwoSameAndOneDifferentWords() {
+        //given
+        WordCount wordCounter = new WordCount();
+
+
+        //when
+        wordCounter.add(TEST_WORD);
+        wordCounter.add("dog");
+        wordCounter.add(TEST_WORD);
+
+        //then
+        Assert.assertEquals(2,wordCounter.count(TEST_WORD));
+
+
+    }
 }
