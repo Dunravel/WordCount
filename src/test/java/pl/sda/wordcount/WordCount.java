@@ -6,9 +6,6 @@ import java.util.Map;
 public class WordCount {
     private Map<String,Integer> wordMap = new HashMap<>();
 
-    public int getSize() {
-        return wordMap.size();
-    }
 
     public int count(String word){
         if(wordMap.containsKey(word)) {
@@ -18,7 +15,11 @@ public class WordCount {
     }
 
     public void add(String word) {
-        wordMap.put(word,1);
+        if(wordMap.containsKey(word)){
+            wordMap.put(word,wordMap.get(word) + 1);
+        }else {
+            wordMap.put(word, 1);
+        }
 
 
     }

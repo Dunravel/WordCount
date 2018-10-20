@@ -54,4 +54,17 @@ public class WordCountTest {
         Assert.assertEquals(2,wordCounter.count(TEST_WORD));
 
     }
+
+    @Test
+    public void shouldCountReturn1WhenAddedTwoDifferentWords(){
+        //given
+        WordCount wordCounter = new WordCount();
+
+        //when
+        wordCounter.add(TEST_WORD);
+        wordCounter.add("kot");
+
+        //then
+        Assert.assertEquals(1,wordCounter.count(TEST_WORD));
+    }
 }
