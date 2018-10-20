@@ -41,6 +41,17 @@ public class WordCountTest {
     }
 
     @Test
-    public void sholuldChceck() {
+    public void shouldCountReturnTwoWhenAddedSameWordTwice() {
+        //given
+        WordCount wordCounter = new WordCount();
+
+        //when
+        wordCounter.add(TEST_WORD);
+        wordCounter.add(TEST_WORD);
+
+        //then
+
+        Assert.assertEquals(2,wordCounter.count(TEST_WORD));
+
     }
 }
