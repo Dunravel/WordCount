@@ -18,6 +18,7 @@ public class WordCount {
     }
 
     public void add(String word) {
+        wordMap.put(word,1);
 
 
     }
