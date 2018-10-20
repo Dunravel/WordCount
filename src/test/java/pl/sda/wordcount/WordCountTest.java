@@ -76,4 +76,15 @@ public class WordCountTest {
         Assert.assertEquals(2, wordCount.count(TEST_WORD));
         Assert.assertEquals(1,wordCount.count(DOG_WORD));
     }
+
+    @Test
+    public void shouldCountReturn0WhenAddedEmptyString(){
+        //given
+
+        //when
+        wordCount.add("");
+
+        //then
+        Assert.assertEquals(0,wordCount.count(""));
+    }
 }
