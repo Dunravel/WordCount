@@ -15,10 +15,12 @@ class WordCount {
     }
 
     void add(String word) {
-        if (wordMap.containsKey(word)) {
-            wordMap.put(word, wordMap.get(word) + 1);
-        } else {
-            wordMap.put(word, 1);
+        if (!word.equals("")) {
+            if (wordMap.containsKey(word)) {
+                wordMap.put(word, wordMap.get(word) + 1);
+            } else {
+                wordMap.put(word, 1);
+            }
         }
     }
 }

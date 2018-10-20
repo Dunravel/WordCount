@@ -85,6 +85,6 @@ public class WordCountTest {
         wordCount.add("");
 
         //then
-        Assert.assertEquals(0,wordCount.count(""));
+        Assert.assertEquals(0, wordCount.count(""));
     }
 }
