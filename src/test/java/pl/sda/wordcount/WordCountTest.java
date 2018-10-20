@@ -31,12 +31,13 @@ public class WordCountTest {
     @Test
     public void shouldAddAddNewWordToObject(){
         //given
-
-        //when
         wordCount.add(TEST_WORD);
 
+        //when
+        int result = wordCount.count(TEST_WORD);
+
         //then
-        Assert.assertEquals(1,wordCount.getSize());
+        Assert.assertEquals(1,result);
     }
 
     @Test
