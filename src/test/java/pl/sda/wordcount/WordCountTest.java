@@ -38,4 +38,8 @@ public class WordCountTest {
         //then
         Assert.assertEquals(1,wordCount.getSize());
     }
+
+    @Test
+    public void sholuldChceck() {
+    }
 }

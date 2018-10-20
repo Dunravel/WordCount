@@ -11,10 +11,10 @@ public class WordCount {
     }
 
     public int count(String word){
-        if(!wordMap.containsKey(word)) {
-            return 0;
+        if(wordMap.containsKey(word)) {
+            return wordMap.get(word);
         }
-        return -1;
+        return 0;
     }
 
     public void add(String word) {
