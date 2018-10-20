@@ -15,6 +15,20 @@ public class WordCountTest {
 
         //then
 
+
         Assert.assertEquals(0, result);
+    }
+
+    @Test
+    public void shouldAddAddNewWordToObject(){
+        //given
+        String word = "test";
+
+        //when
+        WordCount result = new WordCount();
+        result.add(word);
+
+        //then
+        Assert.assertEquals(1,result.wordMap.size());
     }
 }
