@@ -1,17 +1,27 @@
 package pl.sda.wordcount;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class WordCountTest {
 
+    public static final String TEST_WORD = "test";
+    private WordCount wordCount;
+
+    @Before
+    public void setUp() {
+
+        wordCount = new WordCount();
+    }
+
     @Test
     public void shouldCountReturnZeroForNewObject(){
         //given
-        String word = "test";
+        String word = TEST_WORD;
 
         //when
-        int result = new WordCount().count(word);
+        int result = wordCount.count(word);
 
         //then
 
@@ -22,13 +32,12 @@ public class WordCountTest {
     @Test
     public void shouldAddAddNewWordToObject(){
         //given
-        String word = "test";
+        String word = TEST_WORD;
 
         //when
-        WordCount result = new WordCount();
-        result.add(word);
+        wordCount.add(word);
 
         //then
-        Assert.assertEquals(1,result.wordMap.size());
+        Assert.assertEquals(1,wordCount.getSize());
     }
 }

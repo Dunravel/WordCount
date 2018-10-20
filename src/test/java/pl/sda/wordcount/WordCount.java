@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WordCount {
-    Map<String,Integer> wordMap = new HashMap<>();
+    private Map<String,Integer> wordMap = new HashMap<>();
+
+    public int getSize() {
+        return wordMap.size();
+    }
 
     public int count(String word){
         if(!wordMap.containsKey(word)) {
