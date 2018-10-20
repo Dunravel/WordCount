@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class WordCountTest {
 
-    public static final String TEST_WORD = "test";
+    private static final String TEST_WORD = "test";
     private WordCount wordCount;
 
     @Before
@@ -18,10 +18,9 @@ public class WordCountTest {
     @Test
     public void shouldCountReturnZeroForNewObject(){
         //given
-        String word = TEST_WORD;
 
         //when
-        int result = wordCount.count(word);
+        int result = wordCount.count(TEST_WORD);
 
         //then
 
@@ -32,10 +31,9 @@ public class WordCountTest {
     @Test
     public void shouldAddAddNewWordToObject(){
         //given
-        String word = TEST_WORD;
 
         //when
-        wordCount.add(word);
+        wordCount.add(TEST_WORD);
 
         //then
         Assert.assertEquals(1,wordCount.getSize());
