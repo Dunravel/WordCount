@@ -7,6 +7,7 @@ import org.junit.Test;
 public class WordCountTest {
 
     private static final String TEST_WORD = "test";
+    private static final String DOG_WORD = "dog";
     private WordCount wordCount;
 
     @Before
@@ -16,7 +17,7 @@ public class WordCountTest {
     }
 
     @Test
-    public void shouldCountReturnZeroForNewObject(){
+    public void shouldCountReturnZeroForNewObject() {
         //given
 
         //when
@@ -29,7 +30,7 @@ public class WordCountTest {
     }
 
     @Test
-    public void shouldAddAddNewWordToObject(){
+    public void shouldAddAddNewWordToObject() {
         //given
         wordCount.add(TEST_WORD);
 
@@ -37,51 +38,45 @@ public class WordCountTest {
         int result = wordCount.count(TEST_WORD);
 
         //then
-        Assert.assertEquals(1,result);
+        Assert.assertEquals(1, result);
     }
 
     @Test
     public void shouldCountReturnTwoWhenAddedSameWordTwice() {
         //given
-        WordCount wordCounter = new WordCount();
 
         //when
-        wordCounter.add(TEST_WORD);
-        wordCounter.add(TEST_WORD);
+        wordCount.add(TEST_WORD);
+        wordCount.add(TEST_WORD);
 
         //then
 
-        Assert.assertEquals(2,wordCounter.count(TEST_WORD));
+        Assert.assertEquals(2, wordCount.count(TEST_WORD));
 
     }
 
     @Test
-    public void shouldCountReturn1WhenAddedTwoDifferentWords(){
+    public void shouldCountReturn1WhenAddedTwoDifferentWords() {
         //given
-        WordCount wordCounter = new WordCount();
 
         //when
-        wordCounter.add(TEST_WORD);
-        wordCounter.add("kot");
+        wordCount.add(TEST_WORD);
+        wordCount.add(DOG_WORD);
 
         //then
-        Assert.assertEquals(1,wordCounter.count(TEST_WORD));
+        Assert.assertEquals(1, wordCount.count(TEST_WORD));
     }
 
     @Test
     public void shouldCountReturnTwoWhenAddedTwoSameAndOneDifferentWords() {
         //given
-        WordCount wordCounter = new WordCount();
-
 
         //when
-        wordCounter.add(TEST_WORD);
-        wordCounter.add("dog");
-        wordCounter.add(TEST_WORD);
+        wordCount.add(TEST_WORD);
+        wordCount.add(DOG_WORD);
+        wordCount.add(TEST_WORD);
 
         //then
-        Assert.assertEquals(2,wordCounter.count(TEST_WORD));
-
-
+        Assert.assertEquals(2, wordCount.count(TEST_WORD));
     }
 }
