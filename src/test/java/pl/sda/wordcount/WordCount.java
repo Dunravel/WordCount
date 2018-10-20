@@ -12,4 +12,8 @@ public class WordCount {
         }
         return -1;
     }
+
+    public void add(String word) {
+
+    }
 }
