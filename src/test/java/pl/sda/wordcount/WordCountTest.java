@@ -24,21 +24,18 @@ public class WordCountTest {
         int result = wordCount.count(TEST_WORD);
 
         //then
-
-
         Assert.assertEquals(0, result);
     }
 
     @Test
     public void shouldAddAddNewWordToObject() {
         //given
-        wordCount.add(TEST_WORD);
 
         //when
-        int result = wordCount.count(TEST_WORD);
+        wordCount.add(TEST_WORD);
 
         //then
-        Assert.assertEquals(1, result);
+        Assert.assertEquals(1, wordCount.count(TEST_WORD));
     }
 
     @Test
@@ -50,7 +47,6 @@ public class WordCountTest {
         wordCount.add(TEST_WORD);
 
         //then
-
         Assert.assertEquals(2, wordCount.count(TEST_WORD));
 
     }
@@ -78,5 +74,6 @@ public class WordCountTest {
 
         //then
         Assert.assertEquals(2, wordCount.count(TEST_WORD));
+        Assert.assertEquals(1,wordCount.count(DOG_WORD));
     }
 }
