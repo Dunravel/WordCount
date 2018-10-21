@@ -18,17 +18,19 @@ public class EvenNumberTest {
         Assert.assertTrue(isEven);
     }
 
-    @Test
-    public void shouldRecognizeWhenNumberIsOdd(){
+    @Test(expected = NotEvenNumberException.class)
+    public void shouldRecognizeWhenNumberIsNotOdd(){
         //given
         int number = 1;
-        EvenNumber evenNumber = new EvenNumber(number);
+
 
         //when
-        boolean isEven = evenNumber.isEven();
+        new EvenNumber(number);
+
         //then
-        Assert.assertFalse(isEven);
     }
+
+
 
 
 }
