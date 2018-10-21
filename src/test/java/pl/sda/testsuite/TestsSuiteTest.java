@@ -9,6 +9,7 @@ package pl.sda.testsuite;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
@@ -19,25 +20,29 @@ import java.util.Map;
 
 public class TestsSuiteTest {
 
+    private TestScenarioValidator validator;
+    private AuthorAccess authorAccess;
+    private Map<Author, TestScenario> testScenarios;
+    private TestSuite testSuite;
+
+    @Before
+    public void setUp(){
+
+        validator = Mockito.mock(TestScenarioValidator.class);
+        authorAccess = Mockito.mock(AuthorAccess.class);
+        testScenarios = new HashMap<>();
+        testSuite = new TestSuite(validator, authorAccess, testScenarios);
+    }
+
     @Test
     public void shouldAddTestScenario() {
         //given
 
-        //given correct test scenario
-        TestScenarioValidator validator = Mockito.mock(TestScenarioValidator.class);
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any(TestScenario.class))).willReturn(true);
         TestScenario testScenario = new TestScenario();
 
-        //given author with privileges
-        AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(true);
         Author author = new Author();
-
-        Map<Author,TestScenario> testScenarios = new HashMap<>();
-
-
-        //given test suite
-        TestSuite testSuite = new TestSuite(validator,authorAccess,testScenarios);
 
         //when
         testSuite.add(testScenario, author);
