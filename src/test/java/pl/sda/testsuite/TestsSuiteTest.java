@@ -20,6 +20,8 @@ import java.util.Map;
 
 public class TestsSuiteTest {
 
+    private static final TestScenario TEST_SCENARIO = new TestScenario();
+    private static final Author AUTHOR = new Author();
     private TestScenarioValidator validator;
     private AuthorAccess authorAccess;
     private Map<Author, TestScenario> testScenarios;
@@ -39,39 +41,32 @@ public class TestsSuiteTest {
         //given
 
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any(TestScenario.class))).willReturn(true);
-        TestScenario testScenario = new TestScenario();
 
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(true);
-        Author author = new Author();
 
         //when
-        testSuite.add(testScenario, author);
+        testSuite.add(TEST_SCENARIO, AUTHOR);
 
         //then
-        Assert.assertTrue(testScenarios.containsKey(author));
-        Assert.assertTrue(testScenarios.containsValue(testScenario));
+        Assert.assertTrue(testScenarios.containsKey(AUTHOR));
+        Assert.assertTrue(testScenarios.containsValue(TEST_SCENARIO));
     }
     @Test
     public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
         //given
 
         //given correct test scenario
-        TestScenarioValidator validator = Mockito.mock(TestScenarioValidator.class);
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any(TestScenario.class))).willReturn(true);
-        TestScenario testScenario = new TestScenario();
 
         //given author with privileges
-        AuthorAccess authorAccess = Mockito.mock(AuthorAccess.class);
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(false);
-        Author author = new Author();
 
-        Map<Author,TestScenario> testScenarios = new HashMap<>();
 
         //given test suite
         TestSuite testSuite = new TestSuite(validator,authorAccess,testScenarios);
 
         //when
-        testSuite.add(testScenario, author);
+        testSuite.add(TEST_SCENARIO, AUTHOR);
 
         //then
         Assert.assertTrue(testScenarios.isEmpty());
