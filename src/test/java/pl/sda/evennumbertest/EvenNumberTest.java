@@ -26,7 +26,6 @@ public class EvenNumberTest {
 
         //when
         boolean isEven = evenNumber.isEven();
-
         //then
         Assert.assertFalse(isEven);
     }
