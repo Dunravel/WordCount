@@ -30,6 +30,19 @@ public class EvenNumberTest {
         //then
     }
 
+    @Test(expected = NotEvenNumberException.class)
+    public void shouldRecognizeWhenNumberIsZero(){
+        //given
+        int number = 0;
+
+        //when
+        new EvenNumber(number);
+
+        //then
+    }
+
+
+
 
 
 
