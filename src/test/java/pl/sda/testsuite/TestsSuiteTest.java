@@ -59,13 +59,8 @@ public class TestsSuiteTest {
 
         //given correct test scenario
         BDDMockito.given(validator.isCorrect(ArgumentMatchers.any(TestScenario.class))).willReturn(true);
-
         //given author with privileges
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(false);
-
-
-        //given test suite
-        TestSuite testSuite = new TestSuite(validator,authorAccess,testScenarios);
 
         //when
         testSuite.add(TEST_SCENARIO, AUTHOR);
