@@ -51,6 +51,8 @@ public class TestsSuiteTest {
         Assert.assertTrue(testScenarios.containsKey(AUTHOR));
         Assert.assertTrue(testScenarios.containsValue(TEST_SCENARIO));
     }
+
+
     @Test
     public void shouldNotAddTestScenarioWhenAuthorHasNoPrivileges() {
         //given
@@ -60,6 +62,28 @@ public class TestsSuiteTest {
 
         //given author with privileges
         BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(false);
+
+
+        //given test suite
+        TestSuite testSuite = new TestSuite(validator,authorAccess,testScenarios);
+
+        //when
+        testSuite.add(TEST_SCENARIO, AUTHOR);
+
+        //then
+        Assert.assertTrue(testScenarios.isEmpty());
+    }
+
+
+    @Test
+    public void shouldNotAddTestScenarioWhenTestScenarioIsNotCorrect() {
+        //given
+
+        //given correct test scenario
+        BDDMockito.given(validator.isCorrect(ArgumentMatchers.any(TestScenario.class))).willReturn(false);
+
+        //given author with privileges
+        BDDMockito.given(authorAccess.hasPrivileges(ArgumentMatchers.any(Author.class))).willReturn(true);
 
 
         //given test suite
