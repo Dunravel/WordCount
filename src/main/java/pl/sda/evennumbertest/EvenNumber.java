@@ -5,7 +5,7 @@ class EvenNumber {
 
     EvenNumber(int number) throws NotEvenNumberException{
         if(isOdd(number)){
-            throw new NotEvenNumberException();
+            throw new NotEvenNumberException(number);
         }
         this.number = number;
     }
@@ -14,7 +14,7 @@ class EvenNumber {
         return number % 2 == 0;
     }
 
-    boolean isOdd(int number){
+    private boolean isOdd(int number){
         return number % 2 != 0;
     }
 }

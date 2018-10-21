@@ -1,9 +1,7 @@
 package pl.sda.evennumbertest;
 
-public class NotEvenNumberException extends RuntimeException {
-
-
-//    public NotEvenNumberException(int number) {
-//        super("Number is not even: " + number);
-//    }
+class NotEvenNumberException extends RuntimeException {
+    NotEvenNumberException(int number) {
+        super("Given number is not even: " + number);
+    }
 }
