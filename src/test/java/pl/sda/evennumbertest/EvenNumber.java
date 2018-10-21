@@ -1,11 +1,13 @@
 package pl.sda.evennumbertest;
 
-public class EvenNumber {
+class EvenNumber {
+    private final int number;
 
-    public EvenNumber(int evenNumber) {
+    EvenNumber(int number) {
+        this.number = number;
     }
 
-    public boolean isEven() {
-        return true;
+    boolean isEven() {
+        return number % 2 == 0;
     }
 }
